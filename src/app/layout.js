@@ -1,14 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
+import {ProvideContext} from "@/app/UseAuth";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const ralewaySans = Raleway({
+  variable: "--font-raleway-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata = {
@@ -19,10 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${ralewaySans.variable} antialiased`}>
+        <ProvideContext>{children}  </ProvideContext>
+        <ToastContainer autoClose={2000} hideProgressBar />
       </body>
     </html>
   );
